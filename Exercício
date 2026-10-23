@@ -1,0 +1,114 @@
+
+# 1 exercício. Cadastro de aluno
+
+aluno = {
+    "nome": "Carlos",
+    "idade": 21,
+    "curso": "Sistemas de Informação",
+    "nota": 7.0
+}
+
+print("Nome:", aluno["nome"])
+print("Curso:", aluno["curso"])
+
+aluno["nota"] = 8.5
+aluno["situacao"] = "Aprovado"
+
+print(aluno)
+
+
+# 2 exercício. Consulta segura com get()
+
+produto = {
+    "nome": "Notebook",
+    "preco": 4500.00,
+    "estoque": 12
+}
+
+chave = input("Digite a informação desejada: ")
+
+valor = produto.get(chave)
+
+if valor == None:
+    print("Informação não encontrada.")
+else:
+    print(valor)
+
+
+# 3 exercício. Controle de estoque
+
+estoque = {
+    "teclado": 15,
+    "mouse": 20,
+    "monitor": 8,
+    "notebook": 5
+}
+
+estoque["webcam"] = 10
+estoque["mouse"] = 25
+
+estoque.pop("monitor")
+
+for produto, quantidade in estoque.items():
+    print("Produto:", produto, "| Quantidade:", quantidade)
+
+total = sum(estoque.values())
+
+print("Total de itens:", total)
+
+
+# 4 exercício. Dicionário aninhado de alunos
+
+turma = {
+    "2026001": {"nome": "Ana", "nota": 8.5},
+    "2026002": {"nome": "Bruno", "nota": 6.0},
+    "2026003": {"nome": "Carla", "nota": 9.2}
+}
+
+soma = 0
+
+for aluno in turma.values():
+    nome = aluno["nome"]
+    nota = aluno["nota"]
+
+    if nota >= 7.0:
+        situacao = "Aprovado"
+    else:
+        situacao = "Reprovado"
+
+    print(nome, "- Nota:", nota, "- Situação:", situacao)
+
+    soma = soma + nota
+
+media = soma / len(turma)
+
+print("Média geral:", media)
+
+
+# 5 exercício. Análise de vendas
+
+vendas = {
+    "Janeiro": 12500,
+    "Fevereiro": 9800,
+    "Março": 15300,
+    "Abril": 11700,
+    "Maio": 18400
+}
+
+total = sum(vendas.values())
+media = total / len(vendas)
+
+maior = max(vendas, key=vendas.get)
+menor = min(vendas, key=vendas.get)
+
+print("Total vendido: R$", total)
+print("Média mensal: R$", media)
+print("Maior venda:", maior, "- R$", vendas[maior])
+print("Menor venda:", menor, "- R$", vendas[menor])
+
+print("Meses acima da média:")
+
+for mes, valor in vendas.items():
+    if valor > media:
+        print(mes)
+
